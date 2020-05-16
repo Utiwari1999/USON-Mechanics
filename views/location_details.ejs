@@ -1,0 +1,10 @@
+<%- include('partials/header'); -%>
+
+<h1>Location details are(<a href="/ip" id="brand">Enable Location</a>)</h1>
+<br><br>
+<h1 id="brand">IP ADDRESS : <%= data["ip"]["address"] %></h1>
+<h1 id="brand">CITY : <%= data["ip"]["city"] %></h1>
+<h1 id="brand">STATE : <%= data["ip"]["region"] %></h1>
+<h1 id="brand">COUNTRY : <%= data["ip"]["country_names"]["en"] %></h1>
+
+<%- include('partials/footer'); -%>

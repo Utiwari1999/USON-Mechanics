@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 const request = require('request');
 var ip_data ='125.19.12.216';
+var expressSanitizer = require("express-sanitizer");
 
 //mongodb packages
 var mongoose = require("mongoose");
@@ -14,6 +15,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 
 //importing user model
 var User = require("./models/user");
+var Enquiry = require("./models/enquiry");
 
 //encryting password
 app.use(require("express-session")({
@@ -24,7 +26,7 @@ app.use(require("express-session")({
 
 
 //Connecting to mongodb server and storing ip_data
-mongoose.connect("mongodb://localhost:27017/uson_mechanics", { useNewUrlParser: true,useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/uson_mechanics", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 //body parser import
 app.use(bodyParser.urlencoded({extended: true}));
@@ -134,6 +136,23 @@ function isLoggedIn(req, res, next){
   }
   res.redirect("/login");
 }
+
+//Enquiry model
+app.get("/enquiry", function(req, res){
+  res.render("enquiry");
+});
+
+app.post("/enquiry", function(req, res){
+  Enquiry.create(req.body.enquiry, function(err, newEnquiry){
+    if (err) {
+      res.render("enquiry");
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+
 
 //PORT
 app.listen(3000, function(){

@@ -1,0 +1,42 @@
+<%- include('partials/header'); -%>
+
+<section id="contact">
+  <div class="container">
+    <div class="well well-sm">
+      <!-- <h3 id="brand"><strong>Contact Us</strong></h3> -->
+    </div>
+
+	<div class="row">
+	  <div class="col-md-7">
+        <img src="contact.png" width="100%" frameborder="0" style="border:0" allowfullscreen>
+      </div>
+
+      <div class="col-md-5">
+          <h2 id="brand" style="font-weight:bold;">Contact Us</h2>
+          <br>
+        <form action="/enquiry" method="POST">
+          <div class="form-group" id="enq">
+            <input type="text" class="form-control" name="enquiry[name]" value="" placeholder="Name">
+          </div>
+          <div class="form-group" id="enq">
+            <input type="text" class="form-control" name="enquiry[email]" value="" placeholder="E-mail">
+          </div>
+          <div class="form-group" id="enq">
+            <input type="text" class="form-control" name="enquiry[phone]" value="" placeholder="Phone">
+          </div>
+          <div class="form-group" id="enq">
+            <input type="text" class="form-control" name="enquiry[address]" value="" placeholder="Address">
+          </div>
+          <div class="form-group" id="enq">
+            <textarea class="form-control" name="enquiry[message]" rows="3" placeholder="Message"></textarea>
+          </div>
+          <button class="btn btn-default" id="enqBtn" type="submit" name="button">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer'); -%>

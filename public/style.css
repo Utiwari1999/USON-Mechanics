@@ -19,6 +19,17 @@ h1{
   padding: 20px 0;
 }
 
+#dash h3{
+  color: #F8E9A1;
+  line-height: 1.2;
+  text-align: center;
+  margin-top: 10px;
+  text-transform:none;
+  padding: 20px 0;
+  font-size: 2.3em;
+
+}
+
 #pcolor{
   color: #3BBA9C;
 }
@@ -31,7 +42,6 @@ p{
 #colorDisplay{
   font-size: 200%;
 }
-
 
 #brand{
   color: #3BBA9C;
@@ -215,4 +225,61 @@ margin-left: 4px;
         margin-bottom: 15px;
     }
 
+}
+
+
+/* Dashboard css */
+#dash1{
+  margin-top: 200px;
+  border-radius: 0;
+  border: 5px solid #A8D0E6;
+
+}
+
+#dash2{
+  margin-top: 85px;
+  margin-left: 100px;
+  border-radius: 0;
+  border: 5px solid #A8D0E6;
+}
+
+#dash button{
+    border-radius:0;
+    /* border:2px solid white; */
+    color: #232b2b;
+    background: white;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #F8E9A1;
+    /* color: white; */
+    padding: 12px 28px;
+    font-size: 26px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 30px;
+    height: 50px;
+}
+
+#dash button:hover{
+  background-color: #A8D0E6;
+  color: white;
+}
+
+.profile {
+  display: inline-block;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border:5px solid #F8E9A1;
+  background: #232b2b;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  left: 50%;
+  right: 50%;
+  margin-top: -150px;
+  margin-right: -150px;
+  margin-left: 140px;
 }

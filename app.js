@@ -152,7 +152,10 @@ app.post("/enquiry", function(req, res){
   });
 });
 
-
+//Dashboard Module
+app.get("/dashboard", function(req, res){
+  res.render("dashboard");
+});
 
 //PORT
 app.listen(3000, function(){

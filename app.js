@@ -172,7 +172,7 @@ app.post("/enquiry", function(req, res){
 });
 
 //Dashboard Module
-app.get("/dashboard", function(req, res){
+app.get("/dashboard", isLoggedIn, function(req, res){
   var cust = (req.user.username).toString();
   console.log(cust);
   Dashboard.find({}, function(err, dashboard){

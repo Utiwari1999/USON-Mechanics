@@ -15,6 +15,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 
 //importing user model
 var User = require("./models/user");
+var Dashboard = require("./models/dashboard");
 var Enquiry = require("./models/enquiry");
 
 //encryting password
@@ -26,7 +27,7 @@ app.use(require("express-session")({
 
 
 //Connecting to mongodb server and storing ip_data
-mongoose.connect("mongodb://localhost:27017/uson_mechanics", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect("mongodb://localhost:27017/uson_mechanics1", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 //body parser import
 app.use(bodyParser.urlencoded({extended: true}));
@@ -98,6 +99,8 @@ app.get("/register", function(req, res){
 app.post("/register", function(req, res){
   req.body.username
   req.body.password
+  // User.email= req.body.email;
+
   var newUser = new User({username: req.body.username});
   User.register(newUser, req.body.password, function(err, user){
     if (err) {
@@ -105,8 +108,24 @@ app.post("/register", function(req, res){
       return res.render("register");
     }
     passport.authenticate("local")(req, res, function(){
+      // passReqToCallback: true
+      // console.log(req.body.email);
       res.redirect("/");
     });
+  });
+  var username = req.body.username;
+  var age = req.body.age;
+  var gender = req.body.gender;
+  var email = req.body.email;
+  var mobile = req.body.mobile;
+  var address = req.body.address;
+  var newDashboard = {username: username, age: age, gender: gender, email: email, mobile: mobile, address:address}
+  Dashboard.create(newDashboard, function(err, dashboard){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(dashboard);
+    }
   });
 });
 
@@ -154,7 +173,18 @@ app.post("/enquiry", function(req, res){
 
 //Dashboard Module
 app.get("/dashboard", function(req, res){
-  res.render("dashboard");
+  var cust = (req.user.username).toString();
+  console.log(cust);
+  Dashboard.find({}, function(err, dashboard){
+    if (err) {
+      console.log(err);
+    } else {
+      // var dash = JSON.parse(dashboard);
+      // console.log(dashboard);
+      res.render("dashboard", {dashboard: dashboard});
+    }
+  })
+
 });
 
 //PORT

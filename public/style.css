@@ -198,6 +198,12 @@ margin-left: 4px;
     box-shadow: 0px 0px 5px white;
 }
 
+#details .form-control{
+    border-radius: 0;
+    border:1px solid white;
+    box-shadow: 0px 0px 5px white;
+}
+
 #contact button{
     border-radius:0;
     /* border:2px solid white; */

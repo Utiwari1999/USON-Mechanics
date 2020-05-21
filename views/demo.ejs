@@ -1,0 +1,89 @@
+<%- include('partials/header'); -%>
+
+<h1 style="text-transform: none; font-size: 3.5em; margin-top: 20px; font-weight: 200">Vehicle Details</h1>
+
+<section>
+  <div class="container">
+    <div class="row" style="margin-top:-160px;">
+
+      <div class="col-md-12" id="dash1" style="border: 1.5px solid #A8D0E6; border-right: 0;">
+          <form action="/car_details" method="POST" style="margin-top: 50px; margin-bottom: 50px">
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">Owner's Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputname" name="vehicle[owner_name]" value="" placeholder="name">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputage" class="col-md-4 col-form-label">Car Company</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputage" name="vehicle[car_company]" value="" placeholder="company">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputgender" class="col-md-4 col-form-label">Model Name</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputgender" name="vehicle[model_name]" value="" placeholder="model">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputemail" class="col-md-4 col-form-label">Color</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputemail" name="vehicle[color]" value="" placeholder="color">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputmobile" class="col-md-4 col-form-label">Delivery Date</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputphone" name="vehicle[delivery_date]" value="" placeholder="date">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputmobile" class="col-md-4 col-form-label">Vehicle Plate no.</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputphone" name="vehicle[vehicle_plate_no]" value="" placeholder="plate no.">
+              </div>
+            </div>
+            <center>
+            <a class="btn btn-primary" style="border:none; background-color: #A8D0E6; color: #232b2b; margin-top: 30px">Edit Details</a>
+            </center>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">Insurance Type</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputname" name="vehicle[insurance_type]" value="" placeholder="insurance type">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputage" class="col-md-4 col-form-label">Insurance Expiry</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputage" name="vehicle[insurance_expiry]" value="" placeholder="insurance expiry">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputgender" class="col-md-4 col-form-label">Engine no.</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputgender" name="vehicle[engine_no]" value="" placeholder="engine no.">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputemail" class="col-md-4 col-form-label">Dealer's name</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="inputemail" name="vehicle[dealer_name]" value="" placeholder="dealer name">
+              </div>
+            </div>
+            <div class="form-group row" id="enq" style="margin:15px; padding: 0px">
+              <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputaddress" class="col-md-4 col-form-label">Dealer Address</label>
+              <div class="col-md-8">
+                <textarea class="form-control" name="vehicle[dealer_Address]" value="" rows="3" placeholder="dealer address" id="inputaddress"></textarea>
+              </div>
+            </div>
+            <center>
+            <button class="btn btn-success" style="border:none; color: #232b2b; background-color: #F8E9A1; margin-top: 30px" type="submit" name="button">Save Changes</button>
+            </center>
+            </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+<%- include('partials/footer'); -%>

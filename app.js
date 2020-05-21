@@ -16,6 +16,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 //importing user model
 var User = require("./models/user");
 var Dashboard = require("./models/dashboard");
+var Vehicle = require("./models/vehicle");
 var Enquiry = require("./models/enquiry");
 
 //encryting password
@@ -27,7 +28,7 @@ app.use(require("express-session")({
 
 
 //Connecting to mongodb server and storing ip_data
-mongoose.connect("mongodb://localhost:27017/uson_mechanics1", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect("mongodb://localhost:27017/uson_mechanics2", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 //body parser import
 app.use(bodyParser.urlencoded({extended: true}));
@@ -129,6 +130,62 @@ app.post("/register", function(req, res){
   });
 });
 
+
+//Enquiry model
+app.get("/enquiry", function(req, res){
+  res.render("enquiry");
+});
+
+app.post("/enquiry", function(req, res){
+  console.log(req.body.name);
+  var name = req.body.name;
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var address = req.body.address;
+  var message = req.body.message;
+  var newEnquiry = {name: name, email: email, phone: phone, address: address, message: message};
+  Enquiry.create(newEnquiry, function(err, enquiry){
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+//Dashboard Module
+app.get("/dashboard", isLoggedIn, function(req, res){
+  var cust = (req.user.username).toString();
+  console.log(cust);
+  Dashboard.find({}, function(err, dashboard){
+    if (err) {
+      console.log(err);
+    } else {
+      // var dash = JSON.parse(dashboard);
+      // console.log(dashboard);
+      res.render("dashboard", {dashboard: dashboard});
+    }
+  })
+
+});
+
+//Car Details Module
+app.get("/car_details", function(req, res){
+  res.render("car_details");
+});
+
+app.post("/car_details", function(req, res){
+  console.log(req.body.vehicle);
+  Vehicle.create(req.body.vehicle, function(err, newEnquiry){
+    if (err) {
+      res.render(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+
 //Login Routes
 app.get("/login", function(req, res){
   res.render("/login");
@@ -155,37 +212,6 @@ function isLoggedIn(req, res, next){
   }
   res.redirect("/login");
 }
-
-//Enquiry model
-app.get("/enquiry", function(req, res){
-  res.render("enquiry");
-});
-
-app.post("/enquiry", function(req, res){
-  Enquiry.create(req.body.enquiry, function(err, newEnquiry){
-    if (err) {
-      res.render("enquiry");
-    } else {
-      res.redirect("/");
-    }
-  });
-});
-
-//Dashboard Module
-app.get("/dashboard", isLoggedIn, function(req, res){
-  var cust = (req.user.username).toString();
-  console.log(cust);
-  Dashboard.find({}, function(err, dashboard){
-    if (err) {
-      console.log(err);
-    } else {
-      // var dash = JSON.parse(dashboard);
-      // console.log(dashboard);
-      res.render("dashboard", {dashboard: dashboard});
-    }
-  })
-
-});
 
 //PORT
 app.listen(3000, function(){

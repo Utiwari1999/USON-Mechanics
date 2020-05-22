@@ -1,12 +1,11 @@
 <%- include('partials/header'); -%>
 
 <h1 style="text-transform: none; font-size: 3.5em; margin-top: 20px; font-weight: 200">Vehicle Details</h1>
-
 <section>
   <div class="container">
     <div class="row" style="margin-top:-160px; margin-bottom: 100px">
       <div class="col-md-12" id="dash1" style="border: 1.5px solid #A8D0E6">
-          <form role="form" action="/car_details" method="POST" style="margin-top: 50px; margin-bottom: 40px">
+          <form role="form" action="/car_details" method="POST" style="margin-top: 50px; margin-bottom: 40px; display: block">
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px; float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">Owner's Name</label>
               <div class="col-sm-8">
@@ -16,7 +15,7 @@
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin:15px; padding: 0px;">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputage" class="col-md-4 col-form-label">Car Company</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputage" name=vehicle[car_company]"" value="" placeholder="company">
+                <input type="text" class="form-control" id="inputage" name="vehicle[car_company]" value="" placeholder="company">
               </div>
             </div>
                     <div class="clearfix"></div>

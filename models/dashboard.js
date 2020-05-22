@@ -7,7 +7,26 @@ var DashboardSchema = new mongoose.Schema({
   gender: String,
   email: String,
   mobile: Number,
-  address: String
+  address: String,
+  details: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Vehicle",
+      'default': [
+        owner_name="",
+        car_company="",
+        model_name="",
+        color="",
+        delivery_date="",
+        vehicle_plate_no="",
+        insurance_type="",
+        insurance_expiry="",
+        engine_no="",
+        dealer_name="",
+        dealer_Address="",
+      ]
+    }
+  ]
 });
 
 DashboardSchema.plugin(passportLocalMongoose);

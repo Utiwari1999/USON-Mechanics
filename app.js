@@ -171,18 +171,45 @@ app.get("/dashboard", isLoggedIn, function(req, res){
 
 //Car Details Module
 app.get("/car_details", function(req, res){
-  res.render("car_details");
+  Dashboard.find({username: req.user.username}).populate("details").exec(function(err, details){
+    if (err) {
+      console.log(err);
+    } else {
+      if (typeof details[0].details[0] !== 'undefined' && details[0].details[0] !== null){
+   // do stuff
+        console.log(details);
+        res.render("car_details", {carDetails: details});
+      }
+      else {
+        console.log(details);
+        res.render("car");
+      }
+
+    }
+  });
+
 });
 
 app.post("/car_details", function(req, res){
   console.log(req.body.vehicle);
-  Vehicle.create(req.body.vehicle, function(err, newEnquiry){
+  Dashboard.find({username: req.user.username}, function(err, dashboard){
     if (err) {
-      res.render(err);
+      console.log(err);
     } else {
-      res.redirect("/");
+      console.log(dashboard);
+      Vehicle.create(req.body.vehicle, function(err, vehicle){
+        if (err) {
+            console.log(err);;
+        } else {
+          console.log(vehicle);
+          dashboard[0].details.push(vehicle);
+          dashboard[0].save();
+          res.redirect("/");
+        }
+      });
     }
   });
+
 });
 
 

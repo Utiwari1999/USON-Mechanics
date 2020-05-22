@@ -1,35 +1,35 @@
 <%- include('partials/header'); -%>
 
 <h1 style="text-transform: none; font-size: 3.5em; margin-top: 20px; font-weight: 200">Vehicle Details</h1>
-
+<% console.log(carDetails[0].details[0]); %>
 <section>
   <div class="container">
     <div class="row" style="margin-top:-160px; margin-bottom: 100px">
       <div class="col-md-12" id="dash1" style="border: 1.5px solid #A8D0E6">
-          <form role="form" action="/car_details" method="POST" style="margin-top: 50px; margin-bottom: 40px">
+          <form role="form" action="/car_details" method="POST" style="margin-top: 50px; margin-bottom: 40px; display: block">
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px; float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">Owner's Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputname" name="vehicle[owner_name]" value="" placeholder="name">
+                <input type="text" class="form-control" id="inputname" name="vehicle[owner_name]" value="<%= carDetails[0].details[0].owner_name %>" placeholder="name">
               </div>
             </div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin:15px; padding: 0px;">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputage" class="col-md-4 col-form-label">Car Company</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputage" name=vehicle[car_company]"" value="" placeholder="company">
+                <input type="text" class="form-control" id="inputage" name="vehicle[car_company]" value="<%= carDetails[0].details[0].car_company %>" placeholder="company">
               </div>
             </div>
                     <div class="clearfix"></div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px; float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputgender" class="col-md-4 col-form-label">Model Name</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputgender" name="vehicle[model_name]" value="" placeholder="model">
+                <input type="text" class="form-control" id="inputgender" name="vehicle[model_name]" value="<%= carDetails[0].details[0].model_name %>" placeholder="model">
               </div>
             </div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin-left:15px; padding: 0px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputemail" class="col-md-4 col-form-label">Color</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputemail" name="vehicle[color]" value="" placeholder="color">
+                <input type="text" class="form-control" id="inputemail" name="vehicle[color]" value="<%= carDetails[0].details[0].color %>" placeholder="color">
               </div>
             </div>
                     <div class="clearfix"></div>
@@ -37,13 +37,13 @@
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px; float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputmobile" class="col-md-4 col-form-label">Delivery Date</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputphone" name="vehicle[delivery_date]" value="" placeholder="date">
+                <input type="text" class="form-control" id="inputphone" name="vehicle[delivery_date]" value="<%= carDetails[0].details[0].delivery_date %>" placeholder="date">
               </div>
             </div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin-left:15px; padding: 0px;">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputmobile" class="col-md-4 col-form-label">Vehicle Plate no.</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputphone" name="vehicle[vehicle_plate_no]" value="" placeholder="plate no.">
+                <input type="text" class="form-control" id="inputphone" name="vehicle[vehicle_plate_no]" value="<%= carDetails[0].details[0].vehicle_plate_no %>" placeholder="plate no.">
               </div>
             </div>
                     <div class="clearfix"></div>
@@ -51,13 +51,13 @@
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px;float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">Insurance Type</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputname" name="vehicle[insurance_type]" value="" placeholder="insurance type">
+                <input type="text" class="form-control" id="inputname" name="vehicle[insurance_type]" value="<%= carDetails[0].details[0].insurance_type %>" placeholder="insurance type">
               </div>
             </div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin-left:15px; padding: 0px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputage" class="col-md-4 col-form-label">Insurance Expiry</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputage" name="vehicle[insurance_expiry]" value="" placeholder="insurance expiry">
+                <input type="text" class="form-control" id="inputage" name="vehicle[insurance_expiry]" value="<%= carDetails[0].details[0].insurance_expiry %>" placeholder="insurance expiry">
               </div>
             </div>
                       <div class="clearfix"></div>
@@ -65,13 +65,13 @@
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="padding: 0px; float: right; margin-right: 20px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputgender" class="col-md-4 col-form-label">Engine no.</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputgender" name="vehicle[engine_no]" value="" placeholder="engine no.">
+                <input type="text" class="form-control" id="inputgender" name="vehicle[engine_no]" value="<%= carDetails[0].details[0].engine_no %>" placeholder="engine no.">
               </div>
             </div>
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin-left:15px; padding: 0px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputemail" class="col-md-4 col-form-label">Dealer's name</label>
               <div class="col-md-8">
-                <input type="text" class="form-control" id="inputemail" name="vehicle[dealer_name]" value="" placeholder="dealer name">
+                <input type="text" class="form-control" id="inputemail" name="vehicle[dealer_name]" value="<%= carDetails[0].details[0].dealer_name %>" placeholder="dealer name">
               </div>
             </div>
                     <div class="clearfix"></div>
@@ -79,7 +79,7 @@
             <div class="form-group row col-xs-10 col-sm-4 col-md-5 col-lg-5" id="enq" style="margin-left:15px; padding: 0px">
               <label style="color: #F76C6C; font-weight: normal; font-size: 100%; display: inline-block" for="inputaddress" class="col-md-4 col-form-label">Dealer Address</label>
               <div class="col-md-8">
-                <textarea class="form-control" name="vehicle[dealer_Address]" value="" rows="3" placeholder="dealer address" id="inputaddress"></textarea>
+                <textarea class="form-control" name="vehicle[dealer_Address]" value="" rows="3" placeholder="dealer address" id="inputaddress"><%= carDetails[0].details[0].dealer_Address %></textarea>
               </div>
             </div>
             <center>

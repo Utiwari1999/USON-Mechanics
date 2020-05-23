@@ -204,7 +204,7 @@ app.post("/car_details", function(req, res){
           console.log(vehicle);
           dashboard[0].details.push(vehicle);
           dashboard[0].save();
-          res.redirect("/");
+          res.redirect("/dashboard");
         }
       });
     }

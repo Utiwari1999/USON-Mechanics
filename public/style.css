@@ -295,3 +295,45 @@ margin-left: 4px;
   margin-right: -150px;
   margin-left: 140px;
 }
+
+
+/* location module styling */
+#appointment{
+    background-color: #232b2b;
+    font-family: 'Roboto', sans-serif;
+}
+
+#appointment .marg{
+    margin-top:40px;
+    margin-bottom: 40px;
+    border-radius:0;
+}
+
+#appointment .form-control{
+    border-radius: 0;
+    border:1px solid white;
+    box-shadow: 0px 0px 5px white;
+}
+
+#appointment button{
+    border-radius:0;
+    /* border:2px solid white; */
+    color: #232b2b;
+    background: white;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #A8D0E6;
+    /* color: black; */
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#appointment button:hover{
+  background-color: white;
+  color: #232b2b;
+}

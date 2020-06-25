@@ -1,0 +1,70 @@
+<%- include('partials/header'); -%>
+
+<section id="appointment">
+  <div class="marg">
+    <h1 style="font-size: 350%; color: white; font-weight: 500">Book Appointment</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+
+        <form action="/book_appointment" method="POST">
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">CITY</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="city" value="" placeholder="City">
+            </div>
+          </div>
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">SERVICE CENTER</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="service_center" value="" placeholder="Service Center">
+            </div>
+          </div>
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">PREFERRED DATE</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="date" value="" placeholder="Preferred Date">
+            </div>
+          </div>
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">PICK-UP TIME</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="pickup_time" value="" placeholder="Pick-Up Time">
+            </div>
+          </div>
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">DROP-OFF TIME</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="dropoff_time" value="" placeholder="Drop-OFF Time">
+            </div>
+          </div>
+          <div class="form-group row" id="enq">
+            <label style="color: white; font-weight: bold; font-size: 120%; display: inline-block" for="inputname" class="col-sm-4 col-form-label">REPAIR PARTS</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputname" name="repair_parts" value="" placeholder="Repair Parts">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-8">
+              <button class="btn btn-default" id="enqBtn" type="submit" name="button">
+                Submit
+              </button>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+      <div class="col-md-6">
+        <img src="mechanic.jpg" width="100%" frameborder="0" style="border:0;" allowfullscreen>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer'); -%>

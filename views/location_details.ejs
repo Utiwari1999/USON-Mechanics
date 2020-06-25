@@ -1,10 +1,42 @@
 <%- include('partials/header'); -%>
 
-<h1>Location details are(<a href="/ip" id="brand">Enable Location</a>)</h1>
+
+<h1 style="text-transform: none; font-weight: 400; margin-top: 30px;">
+  <span style="color: #F8E9A1;">Location Details</span>(<a href="/ip" style="text-decoration: none; font-weight: 400;color: #A8D0E6">Enable Location</a>)</h1>
 <br><br>
-<h1 id="brand">IP ADDRESS : <%= data["ip"]["address"] %></h1>
-<h1 id="brand">CITY : <%= data["ip"]["city"] %></h1>
-<h1 id="brand">STATE : <%= data["ip"]["region"] %></h1>
-<h1 id="brand">COUNTRY : <%= data["ip"]["country_names"]["en"] %></h1>
+<div class="container">
+  <div class="row" style="margin-top: 50px">
+    <div class="col-md-6" id="map" style="height="300px"; width: 300px;">
+     </div>
+     <div class="col-md-6">
+       <h1 style="color: #A8D0E6;text-transform: none; font-weight: 400;">IP Address : <span style="color: white;"><%= data["ip"]["address"] %></span></h1>
+       <h1 style="color: #A8D0E6;text-transform: none; font-weight: 400;">City : <span style="color: white;"><%= data["ip"]["city"] %></span></h1>
+       <h1 style="color: #A8D0E6;text-transform: none; font-weight: 400;">State : <span style="color: white;"><%= data["ip"]["region"] %></span></h1>
+       <h1 style="color: #A8D0E6;text-transform: none; font-weight: 400;">Country : <span style="color: white;"><%= data["ip"]["country_names"]["en"] %></span></h1>
+     </div>
+  </div>
+</div>
+
+<script>
+    var usonMechanicsCoordinates = [80.32336, 26.46289];
+    var map = tt.map({
+        container: 'map',
+        key: '0tv4mh4ayQkxC9lAugWxA9tPXWvRWOnO',
+        style: 'tomtom://vector/1/basic-main',
+        center: usonMechanicsCoordinates,
+        zoom: 15
+    });
+    var marker = new tt.Marker().setLngLat(usonMechanicsCoordinates).addTo(map);
+    var popupOffsets = {
+    top: [0, 0],
+    bottom: [0, -70],
+    'bottom-right': [0, -70],
+    'bottom-left': [0, -70],
+    left: [25, -35],
+    right: [-25, -35]
+  }
+  var popup = new tt.Popup({offset: popupOffsets}).setHTML("<b>USON Mechanics</b><br> 106/200 Gandhi Nagar, Kanpur");
+  marker.setPopup(popup).togglePopup();
+</script>
 
 <%- include('partials/footer'); -%>

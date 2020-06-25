@@ -18,6 +18,7 @@ var User = require("./models/user");
 var Dashboard = require("./models/dashboard");
 var Vehicle = require("./models/vehicle");
 var Enquiry = require("./models/enquiry");
+var Location = require("./models/location");
 
 //encryting password
 app.use(require("express-session")({
@@ -59,6 +60,7 @@ app.get("/ip", isLoggedIn, function(req, res){
   request("http://api.ipstack.com/check?access_key=e93a0af9a29cc5c42ce47d86a479d92a", function(error, reponse, body){
     var data = JSON.parse(body);
     ip_data=data["ip"];
+    // console.log(data);
     // console.log(ip_data);
     // res.send("This is your ip address");
     res.redirect("/location");
@@ -82,13 +84,47 @@ app.get("/location", function(req, res){
       accept: 'application/json'
     }
   };
+
   request(options, function (error, response, body) {
   	if (error) throw new Error(error);
     // res.send("Locate your nearest service center");
     var data = JSON.parse(body);
-  	console.log(data);
+    var demo = data["ip"]["city"];
+    console.log(typeof demo);
+    if(demo != ''){
+      var name = req.user.username;
+      var city = data["ip"]["city"];
+      var state = data["ip"]["region"];
+      var country = data["ip"]["country_names"]["en"]
+      var newLocation = {username: name, city: city, state: state, country: country};
+
+      Location.findOne({username: name}, function(err, location){
+        if (err) {
+          console.log(err);
+        }
+        if (location) {
+          console.log("This data has already been saved");
+        } else {
+          var location = new Location(newLocation);
+          location.save(function(err, location){
+            if (err) {
+              console.log(err);
+            }
+            console.log("New location created");
+            // res.redirect("/ip");
+          });
+        }
+      });
+
+      console.log(req.user.username);
+      console.log(data["ip"]["city"]);
+      console.log(data["ip"]["region"]);
+      console.log(data["ip"]["country_names"]["en"]);
+    }
+
   	res.render("location_details.ejs", {data: data});
   });
+
 });
 
 //Auth Routes
@@ -153,6 +189,16 @@ app.post("/enquiry", function(req, res){
   });
 });
 
+
+
+
+
+//saving location details
+app.post("/save_location_details", function(req, res){
+  console.log(req.user.username);
+  // console.log(req);
+});
+
 //Dashboard Module
 app.get("/dashboard", isLoggedIn, function(req, res){
   var cust = (req.user.username).toString();
@@ -212,6 +258,11 @@ app.post("/car_details", function(req, res){
 
 });
 
+
+//book appointment Module
+app.get("/book_appointment", function(req, res){
+  res.render("book_appointment");
+});
 
 //Login Routes
 app.get("/login", function(req, res){

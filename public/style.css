@@ -337,3 +337,30 @@ margin-left: 4px;
   background-color: white;
   color: #232b2b;
 }
+
+/* My booking style part */
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td {
+  border: 1px solid white;
+  padding: 8px;
+  color: white;
+}
+
+#customers th {
+  border: 1px solid white;
+  padding: 8px;
+  font-weight: bolder;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #A8D0E6;
+  color: #232b2b;
+}

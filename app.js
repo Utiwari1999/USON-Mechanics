@@ -330,10 +330,33 @@ app.post("/book_appointment", function(req, res){
 // });
 
 //displaying my bookings Route
-app.get("/my_bookings", function(req, res){
-  res.render("my_bookings");
+app.get("/my_bookings", isLoggedIn, function(req, res){
+  var booking = []
+  var name = req.user.username.toString();
+  Appointment.find({username: name}, function(err, appointment){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(req.user.username);
+      // console.log(appointment);
+      res.render("my_bookings", {appointment: appointment});
+    }
+  });
+
 });
 
+
+//check for insurance date validity
+app.get("/insurance_check",isLoggedIn , function(req, res){
+  var name = req.user.username.toString();
+  Vehicle.find({owner_name: name}, function(err, vehicle){
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("insurance_check", {vehicle: vehicle});
+    }
+  })
+})
 
 
 //Login Routes

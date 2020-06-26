@@ -1,0 +1,36 @@
+<%- include('partials/header'); -%>
+
+<% console.log(appointment); %>
+<% console.log(appointment[0].date); %>
+<% console.log(appointment[0].pickup_time); %>
+
+<h1 style="margin-top: 30px; margin-bottom: 20px;">My Bookings</h1>
+<br>
+<div class="container">
+  <table id="customers">
+    <tr>
+      <th>Service Center</th>
+      <th>City</th>
+      <th>Date</th>
+      <th>PickUp Time</th>
+      <th>DropOff Time</th>
+      <th>Repair Parts</th>
+    </tr>
+    <% for(var i=0; i<appointment.length; i++){ %>
+      <tr>
+        <td><%= appointment[i].service_center %></td>
+        <td><%= appointment[i].city %></td>
+        <td><%= appointment[i].date %></td>
+        <td><%= appointment[i].pickup_time %></td>
+        <td><%= appointment[i].dropoff_time %></td>
+        <td><%= appointment[i].repair_parts %></td>
+      </tr>
+    <% } %>
+
+
+  </table>
+</div>
+
+
+
+<%- include('partials/footer'); -%>

@@ -26,15 +26,19 @@
           <li class="nav-item"></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <a class="nav-item nav-link active" href="/">HOME   </a>
-          <a class="nav-item nav-link" href="#">ABOUT US   </a>
-          <a class="nav-item nav-link" href="#">BOOK APPOINTMENT   </a>
-          <a class="nav-item nav-link" href="/enquiry">ENQUIRY   </a>
-          <a class="nav-item nav-link" href="/Location">NEARBY SERVICES   </a>
           <% if(!currentUser){ %>
+            <a class="nav-item nav-link active" href="/">HOME   </a>
+            <a class="nav-item nav-link" href="#">ABOUT US   </a>
+            <a class="nav-item nav-link" href="/book_appointment">BOOK APPOINTMENT   </a>
+            <a class="nav-item nav-link" href="/enquiry">ENQUIRY   </a>
+            <a class="nav-item nav-link" href="/Location">NEARBY SERVICES   </a>
             <a class="nav-item nav-link" href="/login"><i class="far fa-user-circle fa-2x"></i></a>
           <% } else{ %>
-            <a class="nav-item nav-link active" href="/Location">WELCOME <%= currentUser.username.toUpperCase() %>!   </a>
+            <a class="nav-item nav-link active" href="/">HOME   </a>
+            <a class="nav-item nav-link" href="#">ABOUT US   </a>
+            <a class="nav-item nav-link" href="/enquiry">ENQUIRY   </a>
+            <a class="nav-item nav-link" href="/Location">NEARBY SERVICES   </a>
+            <a class="nav-item nav-link active" href="#">WELCOME <%= currentUser.username.toUpperCase() %>!   </a>
             <a class="nav-item nav-link" href="/logout">LOGOUT  </a>
             <a class="nav-item nav-link" href="/dashboard"><i class="fas fa-user-cog fa-2x"></i></a>
           <% } %>

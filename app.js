@@ -19,6 +19,8 @@ var Dashboard = require("./models/dashboard");
 var Vehicle = require("./models/vehicle");
 var Enquiry = require("./models/enquiry");
 var Location = require("./models/location");
+var Center = require("./models/center");
+var Appointment = require("./models/appointment");
 
 //encryting password
 app.use(require("express-session")({
@@ -260,9 +262,79 @@ app.post("/car_details", function(req, res){
 
 
 //book appointment Module
-app.get("/book_appointment", function(req, res){
-  res.render("book_appointment");
+app.get("/book_appointment", isLoggedIn, function(req, res){
+  var temp = "";
+  var cent = [];
+  Location.find({username: req.user.username}, function(err, location){
+    if (err) {
+      console.log(err);
+    } else {
+        temp = location[0].city;
+    }
+  });
+  Center.find({}, function(err, center){
+    if (err) {
+      console.log(err);
+    }else {
+      for(var i=0; i<center.length; i++){
+        if(center[i]["name"] === temp){
+            console.log(center[i]);
+            cent = center[i]
+        }
+      }
+      res.render("book_appointment", {center: cent});
+    }
+  });
 });
+
+app.post("/book_appointment", function(req, res){
+  console.log(req.user.username);
+  var username = req.user.username;
+  var service_center = req.body.service_center;
+  var city = req.body.city;
+  var date = req.body.date;
+  var pickup_time = req.body.pickup_time;
+  var dropoff_time = req.body.dropoff_time;
+  var repair_parts = req.body.repair_parts;
+  var newAppointment = {username: username, service_center: service_center, city: city, date: date, pickup_time: pickup_time, dropoff_time: dropoff_time, repair_parts: repair_parts};
+  Appointment.create(newAppointment, function(err, enquiry){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Appointment booked successfully");
+      res.redirect("/dashboard");
+    }
+  });
+});
+
+// creating service center database
+// app.get("/center_database", function(req, res){
+//   var newCenter = {
+//     name: "Gwalior",
+//     city: [
+//       "Perfect Car Care",
+//       "Suzuki Service Center",
+//       "Narayan Suzuki",
+//       "Nexa Service Gwalior",
+//       "Prem Suzuki"
+//     ]
+//   };
+//   Center.create(newCenter, function(err, center){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("Data written successfully");
+//       res.send("Hi There");
+//     }
+//   });
+// });
+
+//displaying my bookings Route
+app.get("/my_bookings", function(req, res){
+  res.render("my_bookings");
+});
+
+
 
 //Login Routes
 app.get("/login", function(req, res){

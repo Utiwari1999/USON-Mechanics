@@ -19,7 +19,7 @@
 4. Extract the ZIP file of the Project within a folder in your system.
 5. Open Command Prompt and using cd command open the folder of the Project
 6. Type node app.js and ENTER
-7. Now open a browser and on the address bar type http://localhost:3000
+7. Now open a web browser and on the address bar type http://localhost:3000
 
 # Screenshots of website
 

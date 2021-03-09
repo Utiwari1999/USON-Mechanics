@@ -1,9 +1,9 @@
-var express = require("express");
+var express = require("express");                    // Importing express module
 var app = express();
-var bodyParser = require("body-parser");
-const request = require('request');
+var bodyParser = require("body-parser");             // Importing body-parser module
+const request = require('request');                  // Importing request module
 var ip_data ='125.19.12.216';
-var expressSanitizer = require("express-sanitizer");
+var expressSanitizer = require("express-sanitizer"); // Importing express-sanitizer module
 
 //mongodb packages
 var mongoose = require("mongoose");
